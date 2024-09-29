@@ -3,10 +3,6 @@
 ### Description
 A distributed application for tracking package deliveries.
 
-OR:
-
-A distributed chat/blogging/social network platform with a web and a desktop/mobile client.
-
 <details>
   <summary style="font-size: 1.25em;"><b>Timeline</b></summary>
 
@@ -31,8 +27,8 @@ A distributed chat/blogging/social network platform with a web and a desktop/mob
 - [Rest](https://www.geeksforgeeks.org/rest-api-introduction/)
 - [Get, Post, Put/Patch, Delete](https://restfulapi.net/http-methods/)
 
-- SQL / CRUD operations
-- JDBC, ORM, JPA, Hibernate, SpringDataJPA
+- [SQL](https://www.w3schools.com/sql/sql_intro.asp) / [CRUD operations](https://www.freecodecamp.org/news/crud-operations-explained/)
+- [ORM](https://www.baeldung.com/cs/object-relational-mapping), [JDBC, JPA] (https://www.baeldung.com/jpa-vs-jdbc), Hibernate, SpringDataJPA
 
 - optional: [Docker](https://www.simplilearn.com/tutorials/docker-tutorial/getting-started-with-docker)
 </details>
@@ -47,6 +43,7 @@ Install following tools:
 - [Mysql installer](https://dev.mysql.com/downloads/installer/): install Mysql workbench, Mysql server, jdbc(JConnector)
 - spring project initializer: https://start.spring.io/
 - optional: [Docker](https://spring.io/guides/gs/spring-boot-docker)
+
 Check installation in cmd:
 - `git --version`
 - `java --version`
