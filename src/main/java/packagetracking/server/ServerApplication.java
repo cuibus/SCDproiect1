@@ -1,4 +1,4 @@
-package edu.utcn.timetracking.server;
+package packagetracking.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +20,7 @@ public class ServerApplication {
 	@Bean
 	public Docket apiTest() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("edu.utcn.timetracking.server"))
+				.apis(RequestHandlerSelectors.basePackage("packagetracking.server"))
 				.paths(PathSelectors.any())
 				.build();
 	}

@@ -37,22 +37,25 @@ A distributed application for tracking package deliveries.
   <summary style="font-size: 1.25em;"><b>Tools</b></summary>
 Install following tools:
 
-- [Git](https://git-scm.com/downloads/win), [setup credentials locally](https://www.geeksforgeeks.org/how-to-set-git-username-and-password-in-gitbash/)
+- [Git client](https://git-scm.com/downloads/win), [setup credentials locally](https://www.geeksforgeeks.org/how-to-set-git-username-and-password-in-gitbash/)
 - [jdk](https://www.oracle.com/java/technologies/downloads), [mvn](https://maven.apache.org/download.cgi), [Intellij community edition](https://www.jetbrains.com/idea/download)
 - [Postman](https://www.postman.com/downloads/)
 - [Mysql installer](https://dev.mysql.com/downloads/installer/): install Mysql workbench, Mysql server, jdbc(JConnector)
-- spring project initializer: https://start.spring.io/
-- optional: [Docker](https://spring.io/guides/gs/spring-boot-docker)
 
 Check installation in cmd:
 - `git --version`
 - `java --version`
 - `mvn --version`
+
+Other tools and libraries:
+- spring project initializer: https://start.spring.io/
+- [lombok](https://www.baeldung.com/intro-to-project-lombok)
+- optional: [Docker](https://spring.io/guides/gs/spring-boot-docker)
 </details>
 
 ### Project requirements
 - Database:
-  - Package: id, courier_id, delivery_address, pay_on_delivery, status (status poate fi NEW, PENDING, DELIVERED)
+  - Package: id, courier_id, created_on, delivery_address, pay_on_delivery, status (status poate fi NEW, PENDING, DELIVERED)
   - Courier: id, name, email, manager_id (managerul este tot un Courier)
 - Server:
   - 8 endpoint-uri pentru operatiile CRUD pe Package, Courier + `getPackagesForCourier()`

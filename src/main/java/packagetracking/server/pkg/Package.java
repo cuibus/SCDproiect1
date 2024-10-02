@@ -1,10 +1,11 @@
-package edu.utcn.timetracking.server.employee;
+package packagetracking.server.pkg;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import packagetracking.server.Courier.Courier;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,17 +14,23 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+public class Package {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(hidden = true)
     private Integer id;
 
-    private String name;
-    private String hourlyRate;
+    @ManyToOne
+    @JoinColumn(name="courier_id", nullable = true)
+    Courier courier;
+
+    private String deliveryAddress;
+
 
     @Column(updatable = false, nullable = false)
     @CreationTimestamp
     @ApiModelProperty(hidden = true)
-    private Date enrollDate;
+    private Date createdOn;
+
+    private PackageStatus status;
 }
