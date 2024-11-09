@@ -1,4 +1,4 @@
-package packagetracking.server.Courier;
+package packagetracking.server.courier;
 
 import packagetracking.server.pkg.Package;
 import org.springframework.web.bind.annotation.*;

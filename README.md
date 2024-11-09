@@ -28,7 +28,7 @@ A distributed application for tracking package deliveries.
 - [Get, Post, Put/Patch, Delete](https://restfulapi.net/http-methods/)
 
 - [SQL](https://www.w3schools.com/sql/sql_intro.asp) / [CRUD operations](https://www.freecodecamp.org/news/crud-operations-explained/)
-- [ORM](https://www.baeldung.com/cs/object-relational-mapping), [JDBC, JPA] (https://www.baeldung.com/jpa-vs-jdbc), Hibernate, SpringDataJPA
+- [ORM](https://www.baeldung.com/cs/object-relational-mapping), [Hibernate](https://medium.com/javarevisited/jpa-vs-hibernate-what-is-the-difference-between-them-0b7f49ad488f), [JDBC, JPA] (https://www.baeldung.com/jpa-vs-jdbc), SpringDataJPA
 
 - optional: [Docker](https://www.simplilearn.com/tutorials/docker-tutorial/getting-started-with-docker)
 </details>
@@ -50,6 +50,7 @@ Check installation in cmd:
 Other tools and libraries:
 - spring project initializer: https://start.spring.io/
 - [lombok](https://www.baeldung.com/intro-to-project-lombok)
+- [vue](https://www.baeldung.com/spring-boot-vue-js)
 - optional: [Docker](https://spring.io/guides/gs/spring-boot-docker)
 </details>
 
