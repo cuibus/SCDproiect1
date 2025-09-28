@@ -6,11 +6,11 @@ A distributed application for tracking package deliveries.
 <details>
   <summary style="font-size: 1.25em;"><b>Timeline</b></summary>
 
-1. intro & install tools
+1. intro, install tools & select project topic!
 2. server (java spring)
-3. free session
-4. mobile (android)/desktop app (C#)
-5. frontend (vue)
+3. mobile (android) / desktop app (C#)
+4. frontend (vue)
+5. AI integration / free session
 6. free session
 7. final presentation
 </details>
@@ -72,18 +72,32 @@ Check the <a href="https://vuetifyjs.com/en/components/explorer/">Vue components
 </details>
 <br>
 
+<details>
+  <summary style="font-size: 1.25em;"><b>AI integration</b></summary>
+
+1. install Ollama locally: https://ollama.com/download
+2. start Ollama UI locally
+3. in Ollama UI, download any model (~1GB)
+4. set the model name in `ChatbotService.ollamaModel`
+5. rerun backend
+
+</details>
+<br>
+
 ### Project requirements
 - Database:
-  - Package: id, courier_id, created_on, delivery_address, pay_on_delivery, status (status poate fi NEW, PENDING, DELIVERED)
-  - Courier: id, name, email, manager_id (managerul este tot un Courier)
+  - minim 3 tabele cu cel putin 3 coloane fiecare
+  - cel putin 2 relatii intre tabele    
 - Server:
-  - 8 endpoint-uri pentru operatiile CRUD pe Package, Courier + `getPackagesForCourier()`
-  - 2 endpoint-uri cu custom query pentru `getAllCouriersWithoutPendingPackages()` si `getAllManagersAndDeliveredNumber()`
+  - minim 8 endpoint-uri pentru operatii CRUD pe tabele
+  - minim 2 endpoint-uri cu custom query
 - Frontend:
-  - sa permita operatii de tipul: create package, view my packages, view unassigned packages, assign package(s), deliver package, etc. Minim 6 operatii.
+  - sa permita operatii de tipul: create item, view items, view items filtered, edit item, etc. Minim 6 operatii.
   - minim 4 componente Vue
 - Desktop client:
-  - sa permita minim 3 operatii: get all couriers without pending packages, get all managers and their number of packages, sendEmail to all selected persons (functionalitatea de sendEmail este inca un endpoint din server, se implementeaza usor cu SMTP, exista cod pe net)
+  - sa permita minim 3 operatii, de ex: get items (filtered), get owners and their items, send email, etc
+- AI:
+  - orice model de AI, o integrare simpla
 - Documentatie:
   - diagrama use-case
   - diagrama secventiala pentru un caz de utilizare

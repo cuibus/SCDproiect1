@@ -4,7 +4,7 @@
       <v-textarea
           label="chatbot answer"
           v-model="chatResponse"
-          disabled="true"
+          readonly
       ></v-textarea>
       <v-text-field v-model="question"
       ></v-text-field>

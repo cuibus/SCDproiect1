@@ -17,6 +17,6 @@ public class ChatbotController {
     @PostMapping
     public String chat(@RequestBody String request)
     {
-        return chatbotService.getChatResponse(request);
+        return chatbotService.askOllama(request);
     }
 }
