@@ -30,4 +30,9 @@ public class Package {
     private Date createdOn;
 
     private PackageStatus status;
+
+    @Override
+    public String toString(){
+        return "{" + "id: " + id + ", deliveryAdress: " + deliveryAddress + "status: " + status + "}";
+    }
 }
