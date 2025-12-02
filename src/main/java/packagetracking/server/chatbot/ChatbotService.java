@@ -1,13 +1,13 @@
-package packagetracking.server.chatbot;
+package packagetracking.server.pkg;
 
-
+import com.utcn.servercourier.Pkg.PackageService;
+import com.utcn.servercourier.Pkg.Package;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import packagetracking.server.pkg.Package;
-import packagetracking.server.pkg.PackageService;
+
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +19,11 @@ public class ChatbotService {
     private final WebClient client;
     private final String ollamaModel = "gemma3:1b";
 
-    @Autowired
-    private PackageService packageService;
 
-    public ChatbotService() {
+    private PackageService packageService;
+    @Autowired
+    public ChatbotService(PackageService packageService) {
+        this.packageService = packageService;
         this.client = WebClient.builder()
                 .baseUrl("http://localhost:11434")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -31,15 +32,21 @@ public class ChatbotService {
 
     public String askOllama(String prompt) {
 
+        String data = packageService.getAllPackages().stream()
+                .map(Package::toString)
+                .collect(Collectors.joining(", "));
+
+
         Map<String, Object> request = Map.of(
                 "model", ollamaModel,
                 "messages", List.of(
-                        Map.of("role", "user", "content",
-                        "You are a chatbot. Database contains: [" +
-                                packageService.findAllPackages().stream().map(Package::toString).collect(Collectors.joining())
-                                + "] Give a response to this request: " +
-                                prompt +". If request does not refer to the database, reply with <<I cannot answer>> "
-                        )
+                        Map.of("role", "user", "content", "You are a package database assistant.\n\n" +
+                                "Here is the package database in JSON format:\n" +
+                                "<<DATA>>\n[" + data + "]\n<<END_DATA>>\n\n" +
+                                "You must answer ONLY based on this database.\n" +
+                                "If the question does not refer to the database, reply with: <<I cannot answer>>.\n\n" +
+                                "User question:\n" +
+                                prompt )
                 ),
                 "stream", false
         );
@@ -59,6 +66,7 @@ public class ChatbotService {
             return "Error while contacting Ollama: " + e.getMessage();
         }
     }
+
 }
 
 class OllamaChatResponse {
@@ -71,3 +79,4 @@ class OllamaChatResponse {
         public String content;
     }
 }
+

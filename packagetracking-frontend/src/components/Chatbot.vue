@@ -1,14 +1,15 @@
 <template>
-  <v-dialog v-model="showDialog" max-width="400px" class="bg-transparent">
+  <v-dialog v-model="internalDialog" max-width="400px" class="bg-transparent">
     <div class="dialogClass">
       <v-textarea
           label="chatbot answer"
           v-model="chatResponse"
           readonly
       ></v-textarea>
-      <v-text-field v-model="question"
-      ></v-text-field>
-      <v-btn @click="send">Create</v-btn>
+
+      <v-text-field v-model="question" label="Ask something..."></v-text-field>
+
+      <v-btn color="primary" @click="send">Ask</v-btn>
     </div>
   </v-dialog>
 </template>
@@ -17,20 +18,42 @@
 import axios from 'axios';
 
 export default {
-  name: 'chatbot',
+  name: 'Chatbot',
+
+  props: {
+    modelValue: {   // <- pentru v-model
+      type: Boolean,
+      required: true
+    }
+  },
+
   data() {
     return {
-      showDialog: Boolean,
+      internalDialog: this.modelValue,
       question: "",
       chatResponse: ""
     }
   },
+
+  watch: {
+    modelValue(newVal) {
+      this.internalDialog = newVal;
+    },
+    internalDialog(newVal) {
+      this.$emit("update:modelValue", newVal);
+    }
+  },
+
   methods: {
     async send() {
       try {
-        const response = await axios.post('http://localhost:8083/chatbot', this.question)
-        console.log("question sent to chatbot", response.data);
-        this.chatResponse = response.data
+        const response = await axios.post(
+          'http://localhost:8082/chatbot',
+             { question: this.question },      
+             { headers: { 'Content-Type': 'application/json' } }
+        );
+
+        this.chatResponse = response.data;
       } catch (error) {
         console.error("Error sending to chatbot:", error);
       }
@@ -45,3 +68,5 @@ export default {
   background-color: white;
 }
 </style>
+
+

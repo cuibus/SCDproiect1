@@ -1,56 +1,55 @@
 <template>
   <v-app>
     <v-main>
-      <packages-view/>
 
-      <v-btn style="align-content: center" @click="openCreatePackageDialog">
-        Create new package
-      </v-btn>
-
-      <add-package
-          :currentUser="username"
-          ref="addPostDialog"
-      ></add-package>
-
-      <v-btn style="align-content: center; margin-left: 10px" @click="openChatbot">
+      <v-btn color="secondary" class="mb-4" @click="showChatbot = true">
         Chatbot
       </v-btn>
 
-      <chatbot
-          ref="chatbotDialog"
-      ></chatbot>
+      <Chatbot v-model="showChatbot" />
+
+      <v-btn color="primary" class="mb-4" @click="showAddDialog = true">
+        AddPackage
+      </v-btn>
+
+      <AddPackages
+        v-model="showAddDialog"
+        :current-user="'TestUser'"
+        @package-created="refreshPackages"
+      />
+
+      <PackagesView ref="packagesView" />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import AddPackages from './components/AddPackages.vue'
 import PackagesView from './components/PackagesView.vue'
-import AddPackage from "@/components/AddPackage.vue";
-import Chatbot from "@/components/Chatbot.vue";
+import Chatbot from './components/Chatbot.vue'
 
 export default {
   name: 'App',
 
   components: {
+    AddPackages,
     PackagesView,
-    AddPackage,
     Chatbot
   },
 
-  data: () => ({
-    username: "Nume utilizator"
-  }),
-  mounted() {
-    this.$refs.addPostDialog.showDialog = false
-    this.$refs.chatbotDialog.showDialog = false
+  data() {
+    return {
+      showAddDialog: false,
+      showChatbot: false
+    };
   },
+
   methods: {
-    openCreatePackageDialog() {
-      this.$refs.addPostDialog.showDialog = true
-    },
-    openChatbot() {
-      this.$refs.chatbotDialog.showDialog = true
+    refreshPackages() {
+      this.$refs.packagesView.fetchPackages();
     }
   }
-}
+};
 </script>
+
+

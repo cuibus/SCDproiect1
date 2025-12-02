@@ -32,7 +32,12 @@ public class Package {
     private PackageStatus status;
 
     @Override
-    public String toString(){
-        return "{" + "id: " + id + ", deliveryAdress: " + deliveryAddress + "status: " + status + "}";
+    public String toString() {
+        return "{"
+                + "\"id\": " + id + ", "
+                + "\"deliveryAddress\": \"" + deliveryAddress + "\", "
+                + "\"status\": \"" + status + "\""
+                + "}";
     }
+
 }
