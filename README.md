@@ -9,8 +9,8 @@ A distributed application for tracking package deliveries.
 1. intro & requirements, select project topic!
 2. server (java spring), github copilot
 3. frontend (Vue)
-4. mobile (Android)
-5. AI integration / free session
+4. AI integration / free session
+5. mobile (Android)
 6. free session
 7. final presentation
 </details>
