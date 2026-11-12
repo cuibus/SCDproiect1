@@ -79,8 +79,10 @@ Check the <a href="https://vuetifyjs.com/en/components/explorer/">Vue components
 1. install Ollama locally: https://ollama.com/download
 2. start Ollama UI locally
 3. in Ollama UI, download any model (~1GB)
-4. set the model name in `ChatbotService.ollamaModel`
+4. set the AI server url (locally), model name and context size in `application.properties`
 5. rerun backend
+
+Notice the special commands: `/usage` and `/summary`
 
 </details>
 <br>

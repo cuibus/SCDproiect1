@@ -22,15 +22,21 @@ export default {
     return {
       showDialog: Boolean,
       question: "",
-      chatResponse: ""
+      chatResponse: "",
+      history: []
     }
   },
   methods: {
     async send() {
       try {
-        const response = await axios.post('http://localhost:8083/chatbot', this.question)
-        console.log("question sent to chatbot", response.data);
+        const response = await axios.post('http://localhost:8083/chatbot',
+            { message: this.question, history: this.history })
         this.chatResponse = response.data
+        if (!this.question.startsWith("/")) {
+          this.history.push({ role: "user", content: this.question },
+              { role: "assistant", content: response.data })
+        }
+        this.question = ""
       } catch (error) {
         console.error("Error sending to chatbot:", error);
       }
