@@ -87,6 +87,26 @@ Notice the special commands: `/usage` and `/summary`
 </details>
 <br>
 
+<details>
+  <summary style="font-size: 1.25em;"><b>Mobile app setup: React Native + Expo Go</b></summary>
+
+1. Install [Node.js LTS](https://nodejs.org/) and check it in a terminal:
+  `node --version`
+   `npm --version`
+2. Make sure you have a working backend running and check which port it is listening on.
+3. Install [Expo Go](https://expo.dev/go) on your Android or iOS phone.
+4. Create the mobile project and move into its directory:
+   `npx create-expo-app@latest mobile`
+   `cd mobile`
+5. Add the React Native components and the app file
+6. Find your laptop's local IP address, which you will use along with the backend port in your API requests (instead of `localhost`, which on the phone points to the phone itself): `ipconfig` (for Windows) or `ipconfig getifaddr en0` (for Mac).
+7. Connect your phone and laptop to the same Wi-Fi network so they can communicate, then start Expo in the project directory:
+   `npx expo start`
+8. Scan the QR code shown in the terminal to open the app on your phone. Keep both the Expo server and backend running
+
+</details>
+<br>
+
 ### Project requirements
 - Database (orice db engine, recomandam mySQL):
   - minim 8 tabele cu cel putin 3-4 coloane fiecare
